@@ -25,10 +25,10 @@
       </div>
       <input type="submit" name="Register" value="Register" />
     </form>
-    <p>Already have an account? 
+    <p>Already have an account? </p>
       <nav> 
         <router-link to="/Login">Log in</router-link>
-      </nav></p>
+      </nav>
   </div>
 </template>
 <script setup lang="ts">
