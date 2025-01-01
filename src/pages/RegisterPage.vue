@@ -69,7 +69,6 @@ const RegisterUser = async () => {
   color: #000000;
 }
 .register-container {
-  width: 650px;
   padding: 40px;
   position: absolute;
   top: 60%;
@@ -81,7 +80,7 @@ const RegisterUser = async () => {
   background-color: #ffffff;
 }
 .register-container h1 {
-  font-size: 90px;
+  font-size: 10vh;
   margin-block: 20px;
   color: #333333;
 }
@@ -96,7 +95,7 @@ const RegisterUser = async () => {
   border: 2px solid #cccccc;
   padding: 14px 10px;
   padding-right: 50px;
-  width: 400px;
+  width: 20rem;
   outline: none;
   border-radius: 24px;
   transition: 0.25s;
@@ -112,7 +111,7 @@ const RegisterUser = async () => {
   border: 2px solid #cccccc;
   padding: 14px 10px;
   padding-right: 0px;
-  width: 400px;
+  width: 20rem;
   outline: none;
   border-radius: 24px;
   transition: 0.25s;
@@ -125,14 +124,15 @@ const RegisterUser = async () => {
 .register-container input[type='password']:not(:placeholder-shown) + label,
 .register-container input[type='date']:focus + label,
 .register-container input[type='datetime-local']:focus + label {
-  font-size: 1rem;
-  transform: translateY(-150%);
+  font-size: 16px;
+  top: -65px;
+  transform: translate(-100%);
   background-color: #ffffff;
 }
 .register-container label {
   position: relative;
-  top: -60px;
-  font-size: 10px;
+  top: -55px;
+  font-size: 12px;
   padding: 0px 5px;
   color: #666;
   transition: 0.3s;
@@ -145,25 +145,25 @@ const RegisterUser = async () => {
   font-size: 20px;
 }
 .username-container label {
-  left: -145px;
+  left: -6rem;
 }
 .username-container i {
-  left: 130px;
+  left: 5rem;
 }
 .email-container label {
-  left: -155px;
+  left: -6rem;
 }
 .email-container i {
-  left: 140px;
+  left: 5rem;
 }
 .pass-container label {
-  left: -145px;
+  left: -6rem;
 }
 .pass-container i {
-  left: 132px;
+  left: 5rem;
 }
 .dob-container label {
-  left: -150px;
+  left: -6rem;
 }
 .dob-container input[type='date']::-webkit-calendar-picker-indicator {
   position: relative;
