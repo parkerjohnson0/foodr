@@ -24,7 +24,6 @@
 import type { ProfileMenuOption } from './models'
 import { useRoute } from 'vue-router'
 const route = useRoute()
-console.log(route)
 const props = defineProps({
   show: Boolean,
 })

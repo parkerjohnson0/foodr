@@ -25,33 +25,50 @@
       </div>
       <input type="submit" name="Register" value="Register" />
     </form>
-    <p>Already have an account? </p>
-      <nav> 
-        <router-link to="/Login">Log in</router-link>
-      </nav>
+    <p>Already have an account?</p>
+    <nav>
+      <router-link to="/Login">Log in</router-link>
+    </nav>
   </div>
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue'
+import { supabaseClient } from 'src/lib/supabaseClient'
 const formData = reactive({
   username: '',
   password: '',
   email: '',
   dateofbirth: '',
 })
-const RegisterUser = () => {
+const RegisterUser = async () => {
   //need to do checks here
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resp = await supabaseClient.auth
+    .signUp({
+      email: formData.email,
+      password: formData.password,
+    })
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    .then(async ({ data, error }) => {
+      if (error !== null) {
+        await supabaseClient.auth.updateUser({
+          data: {
+            display_name: formData.username,
+          },
+        })
+      }
+    })
   console.log(formData)
 }
 </script>
 <style lang="scss" scoped>
+@import '../css/app.scss';
 .register-container p {
   font-size: 15px;
   margin-block: 20px;
   color: #000000;
 }
 .register-container {
-  width: 650px;
   padding: 40px;
   position: absolute;
   top: 60%;
@@ -63,7 +80,7 @@ const RegisterUser = () => {
   background-color: #ffffff;
 }
 .register-container h1 {
-  font-size: 90px;
+  font-size: 10vh;
   margin-block: 20px;
   color: #333333;
 }
@@ -78,7 +95,7 @@ const RegisterUser = () => {
   border: 2px solid #cccccc;
   padding: 14px 10px;
   padding-right: 50px;
-  width: 400px;
+  width: 20rem;
   outline: none;
   border-radius: 24px;
   transition: 0.25s;
@@ -94,7 +111,7 @@ const RegisterUser = () => {
   border: 2px solid #cccccc;
   padding: 14px 10px;
   padding-right: 0px;
-  width: 400px;
+  width: 20rem;
   outline: none;
   border-radius: 24px;
   transition: 0.25s;
@@ -107,14 +124,15 @@ const RegisterUser = () => {
 .register-container input[type='password']:not(:placeholder-shown) + label,
 .register-container input[type='date']:focus + label,
 .register-container input[type='datetime-local']:focus + label {
-  font-size: 1rem;
-  transform: translateY(-150%);
+  font-size: 16px;
+  top: -65px;
+  transform: translate(-100%);
   background-color: #ffffff;
 }
 .register-container label {
   position: relative;
-  top: -60px;
-  font-size: 10px;
+  top: -55px;
+  font-size: 12px;
   padding: 0px 5px;
   color: #666;
   transition: 0.3s;
@@ -127,25 +145,25 @@ const RegisterUser = () => {
   font-size: 20px;
 }
 .username-container label {
-  left: -145px;
+  left: -6rem;
 }
 .username-container i {
-  left: 130px;
+  left: 5rem;
 }
 .email-container label {
-  left: -155px;
+  left: -6rem;
 }
 .email-container i {
-  left: 140px;
+  left: 5rem;
 }
 .pass-container label {
-  left: -145px;
+  left: -6rem;
 }
 .pass-container i {
-  left: 132px;
+  left: 5rem;
 }
 .dob-container label {
-  left: -150px;
+  left: -6rem;
 }
 .dob-container input[type='date']::-webkit-calendar-picker-indicator {
   position: relative;
@@ -156,8 +174,8 @@ const RegisterUser = () => {
 
 .register-container input[type='submit'] {
   border: 0;
-  background-color: #191919;
-  color: #cccccc;
+  background-color: $palette-red;
+  color: $palette-white;
   display: block;
   margin: 0.5px auto;
   text-align: center;

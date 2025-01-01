@@ -20,7 +20,6 @@ onBeforeMount(() => {
 function handleClickOutside(ev: Event) {
   const el = ev.target as HTMLElement
   if (el.id !== id) {
-    console.log(id)
     show.value = false
   }
 }

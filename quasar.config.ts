@@ -52,7 +52,7 @@ export default defineConfig((/* ctx */) => {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {},
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
