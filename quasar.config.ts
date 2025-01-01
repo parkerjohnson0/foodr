@@ -52,7 +52,11 @@ export default defineConfig((/* ctx */) => {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: {
+        SUPABASE_URL: 'https://ppuckafhhnvemwriogqg.supabase.co',
+        SUPABASE_ANON_KEY:
+          'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBwdWNrYWZoaG52ZW13cmlvZ3FnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzU2MDMzNTgsImV4cCI6MjA1MTE3OTM1OH0.QzWnPv_oMEd75g1VeKkhAqi_QPGV5eGmb1VM5TtFY8E',
+      },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,

@@ -25,26 +25,44 @@
       </div>
       <input type="submit" name="Register" value="Register" />
     </form>
-    <p>Already have an account? </p>
-      <nav> 
-        <router-link to="/Login">Log in</router-link>
-      </nav>
+    <p>Already have an account?</p>
+    <nav>
+      <router-link to="/Login">Log in</router-link>
+    </nav>
   </div>
 </template>
 <script setup lang="ts">
 import { reactive } from 'vue'
+import { supabaseClient } from 'src/lib/supabaseClient'
 const formData = reactive({
   username: '',
   password: '',
   email: '',
   dateofbirth: '',
 })
-const RegisterUser = () => {
+const RegisterUser = async () => {
   //need to do checks here
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const resp = await supabaseClient.auth
+    .signUp({
+      email: formData.email,
+      password: formData.password,
+    })
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    .then(async ({ data, error }) => {
+      if (error !== null) {
+        await supabaseClient.auth.updateUser({
+          data: {
+            display_name: formData.username,
+          },
+        })
+      }
+    })
   console.log(formData)
 }
 </script>
 <style lang="scss" scoped>
+@import '../css/app.scss';
 .register-container p {
   font-size: 15px;
   margin-block: 20px;
@@ -156,8 +174,8 @@ const RegisterUser = () => {
 
 .register-container input[type='submit'] {
   border: 0;
-  background-color: #191919;
-  color: #cccccc;
+  background-color: $palette-red;
+  color: $palette-white;
   display: block;
   margin: 0.5px auto;
   text-align: center;

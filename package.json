@@ -18,6 +18,8 @@
   "dependencies": {
     "@primevue/icons": "^4.2.5",
     "@quasar/extras": "^1.16.4",
+    "@supabase/supabase-js": "^2.47.10",
+    "pinia": "^2.3.0",
     "primeicons": "^7.0.0",
     "quasar": "^2.16.0",
     "vue": "^3.4.18",
